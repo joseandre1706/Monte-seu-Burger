@@ -81,5 +81,17 @@
       "tipo": "Finalizado"
     }
   ],
-  "burgers": []
+  "burgers": [
+    {
+      "nome": "José André Pereira Da Silva Neto",
+      "carne": "Maminha",
+      "pao": "",
+      "opcionais": [
+        "Bacon",
+        "Tomate"
+      ],
+      "status": "Solicitado",
+      "id": 1
+    }
+  ]
 }
