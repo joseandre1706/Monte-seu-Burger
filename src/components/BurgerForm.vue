@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Message />
+    <Message :msg="msg" v-show="msg"/>
     <div>
       <form id="burger-form" @submit="createBurger">
         <div class="input-container">
@@ -92,9 +92,10 @@ export default {
       const res = await req.json();
 
       // colocar mensagem de sistema
+      this.msg = `Pedido Nº ${res.id} realizado com sucesso`;   
 
       //limpar mensagem na tela
-
+      setTimeout(() => this.msg = "", 5000);
       //limpar os campos
 
       this.nome = "";
