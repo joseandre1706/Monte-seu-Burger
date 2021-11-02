@@ -10,6 +10,11 @@ yarn install
 yarn serve
 ```
 
+### Compiles and hot-reloads for development
+```
+yarn backend
+```
+
 ### Compiles and minifies for production
 ```
 yarn build
