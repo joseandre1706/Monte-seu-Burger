@@ -105,17 +105,6 @@
       "id": 2
     },
     {
-      "nome": "marniza pereira gomes",
-      "carne": "Maminha",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Cebola roxa",
-        "Pepino"
-      ],
-      "status": "Solicitado",
-      "id": 3
-    },
-    {
       "nome": "Andrea",
       "carne": "Picanha",
       "pao": "Integral",
@@ -129,16 +118,27 @@
       "id": 4
     },
     {
-      "nome": "Paulo Matias",
-      "carne": "Alcatra",
-      "pao": "Pão Mexicano",
+      "nome": "thiago",
+      "carne": "Picanha",
+      "pao": "Integral",
       "opcionais": [
         "Cheddar",
         "Tomate",
-        "Pepino"
+        "Bacon"
       ],
       "status": "Solicitado",
-      "id": 5
+      "id": 6
+    },
+    {
+      "nome": "Zenildo",
+      "carne": "Alcatra",
+      "pao": "Pão Mexicano",
+      "opcionais": [
+        "Bacon",
+        "Cebola roxa"
+      ],
+      "status": "Solicitado",
+      "id": 7
     }
   ]
 }
