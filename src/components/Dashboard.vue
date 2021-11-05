@@ -1,8 +1,9 @@
 <template>
   <div id="burger-table">
+    <Message :msg="msg" v-show="msg"/>
     <div>
       <div id="burger-table-heading">
-        <div class="order-id">#:</div>
+        <div class="order-id">Nº:</div>
         <div>Cliente:</div>
         <div>Pão:</div>
         <div>Carne:</div>
@@ -24,9 +25,9 @@
           </ul>
         </div>
         <div>
-          <select name="status" class="status">
+          <select name="status" class="status" @change="updateBurger($event, burger.id)">
             <option value="">Selecione</option>
-            <option v-for="s in status" :key="s.id" value="s.tipo" :selected="burger.status == s.tipo">
+            <option v-for="s in status" :key="s.id" :value="s.tipo" :selected="burger.status == s.tipo">
               {{ s.tipo }}
             </option>
           </select>
@@ -38,14 +39,20 @@
 </template>
 
 <script>
+import Message from './Message.vue'
+
 export default{
   name: "Dashboard", 
   data(){
     return{
       burgers: null,
       burgers_id: null,
-      status: []
+      status: [],
+      msg: null
     }
+  },
+  components:{
+    Message
   },
   methods:{
     async getPedidos(){
@@ -69,6 +76,7 @@ export default{
 
     },
     async deleteBurger(id){
+
       const req = await fetch(`http://localhost:3000/burgers/${id}`, {
         method: "DELETE"
       });
@@ -76,9 +84,35 @@ export default{
       const res = await req.json();
 
       //mensagem
+      this.msg = `Pedido cancelado com sucesso!`;   
+
+      //limpar mensagem na tela
+      setTimeout(() => this.msg = "", 5000);
 
       this.getPedidos();
-    } 
+    },
+    async updateBurger(event, id){
+
+      const option = event.target.value;
+
+      const dataJson = JSON.stringify({status: option});
+
+      const req = await fetch(`http://localhost:3000/burgers/${id}`,{
+        method: "PATCH",
+        headers: {"Content-Type": "application/json"},
+        body: dataJson
+      });
+
+      const res = await req.json();
+
+      //mensagem
+      this.msg = `O pedido Nº ${res.id} foi atualizado para ${res.status}.`;   
+
+      //limpar mensagem na tela
+      setTimeout(() => this.msg = "", 5000);
+
+      console.log(res);
+    }
   },
   mounted(){
     this.getPedidos();
